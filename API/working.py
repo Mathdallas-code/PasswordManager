@@ -12,7 +12,10 @@ from cryptography.fernet import Fernet
 import uvicorn
 import json
 
-with open("PasswordManager/API/pwds.json", "r") as f:
+with open(
+    "/Users/bruger/Desktop/MyStuff/Coding/Python/Practice/PasswordManager/API/pwds.json",
+    "r",
+) as f:
     pwds: dict = json.load(f)
     print(pwds)
 
@@ -70,7 +73,7 @@ def get_pwd(id: str, api_key: str):
 
 
 @app.post("/create-pwd")
-def create_pwd(id: int, api_key: str, password: pwd):
+def create_pwd(id: str, api_key: str, password: pwd):
     key = api_key.encode()
     cipher_suite = Fernet(key=key)
     if id in pwds:
@@ -81,7 +84,7 @@ def create_pwd(id: int, api_key: str, password: pwd):
         "pwd": cipher_suite.encrypt(password.pwd.encode()).decode(),
         "website": cipher_suite.encrypt(password.website.encode()).decode(),
     }
-    with open("pwds.json", "w") as f:
+    with open("PasswordManager/API/pwds.json", "w") as f:
         json.dump(pwds, f)
         f.close()
     return {"Success!": "Password created!"}
@@ -93,7 +96,7 @@ def update_pwd(id: int, api_key: str, pwd: str):
     cipher_suite = Fernet(key=key)
     if str(id) in pwds:
         pwds[str(id)]["pwd"] = cipher_suite.encrypt(pwd.encode()).decode()
-        with open("pwds.json", "w") as f:
+        with open("PasswordManager/API/pwds.json", "w") as f:
             json.dump(pwds, f)
             f.close()
         return {"Success!": "Password changed!"}
@@ -105,7 +108,7 @@ def update_pwd(id: int, api_key: str, pwd: str):
 def delete_pwd(id: int):
     if id in pwds:
         del pwds[id]
-        with open("pwds.json", "w") as f:
+        with open("PasswordManager/API/pwds.json", "w") as f:
             json.dump(pwds, f)
             f.close()
         return {"Success!": "Password deleted!"}
