@@ -1,0 +1,33 @@
+{
+    "success": {
+        "idExists": {
+            "Success!": "ID exists!"
+        },
+        "passwordCreated": {
+            "Success!": "Password created!"
+        },
+        "passwordUpdated": {
+            "Success!": "Password changed!"
+        },
+        "passwordDeleted": {
+            "Success!": "Password deleted!"
+        }
+    },
+    "errors": {
+        "keyExists": {
+            "Key already exists": "Use /view_key to view the existing key."
+        },
+        "keynotFound": {
+            "Key not found": "Use /generate-key to make a new key."
+        },
+        "idNotFound": {
+            "Error": "ID does not exist"
+        },
+        "passwordAlreadyExists": {
+            "Error": "Password already exists"
+        },
+        "passwordAlreadyDeleted": {
+            "Error": "ID does not exist or password was already deleted"
+        }
+    }
+}

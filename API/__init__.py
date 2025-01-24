@@ -1,1 +1,1 @@
-from pwd_class import pwd
+from API.pwd_class import pwd
