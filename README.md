@@ -24,3 +24,6 @@ In terminal two, you have to run this command :-
 `python -m PwdManager.py` or
 
 `python3 -m PwdManager.py` or
+
+Then, you need to just stay in terminal two
+Terminal one is just to keep the API running.
